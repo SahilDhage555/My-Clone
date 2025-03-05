@@ -1,0 +1,48 @@
+.category{
+    transition: color 0.3s, border-bottom 0.1s;
+    cursor: pointer;
+    border-color: #86198f;
+    padding: 12px 8px;
+
+}
+.category:hover{
+    color: #a21caf; 
+  border-bottom: 3px solid #a21caf;
+}
+
+/* Hide scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+.listItem:hover{
+  color: #26292d;
+}
+
+.hoverBtn{
+  color: #a21caf; 
+  border-bottom: 2px solid #a21caf;
+}
+
+.hoverCate{
+  color: #a21caf; 
+  border-bottom: 2px solid #a21caf;
+}
+
+.hoverCategory{
+  line-height: 34px;
+}
+.listHead{
+  color: #a21caf; 
+  margin-bottom: 2px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.footerLink a{
+  color: #c026d3;
+}
