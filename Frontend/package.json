@@ -20,9 +20,7 @@
   "homepage": "https://github.com/SahilDhage555/My-Meesho.git",
 "scripts": {
   "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-},
-  "scripts": {
+  "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
