@@ -7,29 +7,12 @@ import { BsCart2 } from "react-icons/bs";
 import playstore from "../Images/playstore-download.png";
 import appstore from "../Images/appstore-download.png";
 import { Link } from "react-router-dom";
-import SignUp from "./SignUp";
-import CategoryScroll from "./NavbarCategory";
 import NavbarCategory from "./NavbarCategory";
 
 function Navbar() {
   const [isDownloadHovered, setDownloadHovered] = useState(false);
   const [isProfileHovered, setProfileHovered] = useState(false);
-  const [isEthnicHovered, setEthnicHovered] = useState(false);
-  const [isWesternHovered, setWesternHovered] = useState(false);
-  const [isMenHovered, setMenHovered] = useState(false);
-  const [isKidsHovered, setKidsHovered] = useState(false);
-  const [isHomeHovered, setHomeHovered] = useState(false);
-  const [isBeautyHovered, setBeautyHovered] = useState(false);
-  const [isJewelleryHovered, setJewelleryHovered] = useState(false);
-  const [isBagsHovered, setBagsHovered] = useState(false);
-  const [isElectronicsHovered, setElectronicsHovered] = useState(false);
-  const [isSportsHovered, setSportsHovered] = useState(false);
-  const [isCarsHovered, setCarsHovered] = useState(false);
-  const [isStationeryHovered, setStationeryHovered] = useState(false);
-  const [isPetsHovered, setPetsHovered] = useState(false);
-  const [isFoodsHovered, setFoodsHovered] = useState(false);
-  const [isMusicalHovered, setMusicalHovered] = useState(false);
-  const [isBooksHovered, setBooksHovered] = useState(false);
+
   
   return (
     <nav className="font-medium z-10 text-gray-700 w-full top-0 fixed bg-white ">

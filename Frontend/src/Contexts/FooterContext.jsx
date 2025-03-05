@@ -12,7 +12,7 @@ export const FooterProvider = ({ children }) => {
   useEffect(() => {
     // Fetch footer content from backend API
     axios
-      .get("http://localhost:5000/api/footer/aboutFooter")
+      .get("https://my-meesho-git-main-sahildhage555s-projects.vercel.app/api/footer/aboutFooter")
       .then((response) => {
         if (response.data.success) {
           setFooterData(response.data.data);
