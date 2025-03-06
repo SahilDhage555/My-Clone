@@ -2,15 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-app.use(cors());
 
-const filterRoutes = require("./routes/filterRoutes"); 
-const productRoutes = require("./routes/productRoutes"); 
-const footerRoutes = require("./routes/footerRoute"); 
+const filterRoutes = require("./routes/filterRoutes");
+const productRoutes = require("./routes/productRoutes");
+const footerRoutes = require("./routes/footerRoute");
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 // ✅ Connect to MongoDB (Meesho Database)
 mongoose
