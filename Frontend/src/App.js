@@ -36,7 +36,7 @@ function MainContent() {
         <>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Navbar />} />
+            <Route path={"/"} element={<Navbar />} />
           </Routes>
           <Posters />
           <ProductFilters />

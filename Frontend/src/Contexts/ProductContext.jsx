@@ -10,12 +10,12 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("https://my-meesho-git-main-sahildhage555s-projects.vercel.app/api/products")
+      .get("http://localhost:5000/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
 
     axios
-      .get("https://my-meesho-git-main-sahildhage555s-projects.vercel.app/api/filters")
+      .get("http://localhost:5000/api/filters")
       .then((res) => setFilters(res.data))
       .catch((err) => console.error("Error fetching filters:", err));
   }, []);

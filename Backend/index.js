@@ -2,11 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-app.use(cors({ origin: "https://my-meesho-7biyra8ev-sahildhage555s-projects.vercel.app/" }));
 
-const filterRoutes = require("./routes/filterRoutes"); // ✅ Import filter routes
-const productRoutes = require("./routes/productRoutes"); // ✅ Import product routes
-const footerRoutes = require("./routes/footerRoute"); // ✅ Import footer routes
+const filterRoutes = require("./routes/filterRoutes"); 
+const productRoutes = require("./routes/productRoutes"); 
+const footerRoutes = require("./routes/footerRoute"); 
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,5 +23,5 @@ app.use("/api/products", productRoutes);
 app.use("/api/footer", footerRoutes); // ✅ Footer Content API
 
 // ✅ Start the Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

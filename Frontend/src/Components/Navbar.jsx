@@ -12,7 +12,6 @@ import NavbarCategory from "./NavbarCategory";
 function Navbar() {
   const [isDownloadHovered, setDownloadHovered] = useState(false);
   const [isProfileHovered, setProfileHovered] = useState(false);
-
   
   return (
     <nav className="font-medium z-10 text-gray-700 w-full top-0 fixed bg-white ">
