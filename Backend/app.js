@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-app.use(cors({ origin: "https://my-meesho-7biyra8ev-sahildhage555s-projects.vercel.app/" }));
+app.use(cors());
 
 const filterRoutes = require("./routes/filterRoutes"); // ✅ Import filter routes
 const productRoutes = require("./routes/productRoutes"); // ✅ Import product routes
