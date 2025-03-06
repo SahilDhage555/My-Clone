@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 mongoose
   .connect("mongodb://localhost:27017/Meesho")
   .then(() => console.log("✅ Connected to Meesho DB"))
+  
   .catch((err) => console.error("❌ Error connecting to Meesho DB:", err));
 
 // ✅ Use the Routes for Filters, Products, and Footer
