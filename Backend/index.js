@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const cors = require("cors");
 
 const filterRoutes = require("./routes/filterRoutes");
@@ -13,7 +14,10 @@ app.use(bodyParser.json());
 
 // ✅ Connect to MongoDB (Meesho Database)
 mongoose
-  .connect("mongodb://localhost:27017/Meesho")
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("✅ Connected to Meesho DB"))
   
   .catch((err) => console.error("❌ Error connecting to Meesho DB:", err));
