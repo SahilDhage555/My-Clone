@@ -13,15 +13,20 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // ✅ Connect to MongoDB (Meesho Database)
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ Connected to Meesho DB"))
-  
-  .catch((err) => console.error("❌ Error connecting to Meesho DB:", err));
-
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Set timeout to 5s
+    });
+    console.log("MongoDB Connected Successfully!");
+  } catch (err) {
+    console.error("MongoDB Connection Failed!", err);
+    process.exit(1); // Exit if DB connection fails
+  }
+};
+connectDB();
 // ✅ Use the Routes for Filters, Products, and Footer
 app.use("/api/filters", filterRoutes);
 app.use("/api/products", productRoutes);
