@@ -28,9 +28,9 @@ const connectDB = async () => {
 };
 connectDB();
 // ✅ Use the Routes for Filters, Products, and Footer
-app.use("/api/filters", filterRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/footer", footerRoutes); // ✅ Footer Content API
+app.use("/filters", filterRoutes);
+app.use("/products", productRoutes);
+app.use("/footer", footerRoutes); // ✅ Footer Content API
 
 // ✅ Start the Server
 const PORT = process.env.PORT || 5000;

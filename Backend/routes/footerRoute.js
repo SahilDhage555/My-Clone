@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addContent, getFooterContent } = require("../controllers/footerContent"); // ✅ Corrected path
+const { addContent, getFooterContent } = require("../controllers/footerContent"); 
 
 // ✅ API to add footer content
 router.post("/add", addContent);

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const FilterNames = require("../models/filterName"); // Import the model
+const FilterNames = require("../models/filterName"); 
 
 // Add a new filter name to the Filter-Names collection
 router.post("/addFilters", async (req, res) => {
@@ -23,7 +23,7 @@ router.post("/addFilters", async (req, res) => {
 // Fetch all filter names from the Filter-Names collection
 router.get("/", async (req, res) => {
   try {
-    const filterNames = await FilterNames.find().lean(); // Retrieve all filter names
+    const filterNames = await FilterNames.find(); // Retrieve all filter names
     res.status(200).json(filterNames); // Send back the filter names
   } catch (err) {
     res.status(500).json({ message: "Error fetching filter names", error: err.message });
