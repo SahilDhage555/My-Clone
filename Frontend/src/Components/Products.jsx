@@ -10,7 +10,7 @@ const Products = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-x-3 gap-y-4 justify-around">
+      <div className="flex flex-wrap gap-x-5 gap-y-8">
         {products.map(
           ({
             _id,
