@@ -23,11 +23,10 @@ router.post("/addFilters", async (req, res) => {
 // ✅ Fetch all filter names
 router.get("/", async (req, res) => {
   try {
-    const filterNames = await FilterNames.find(); // Retrieve all filters
-    res.status(200).json({ success: true, data: filterNames });
+    const filterNames = await FilterNames.find(); 
+    res.status(200).json(filterNames);
   } catch (err) {
-    console.error("❌ Error fetching filters:", err);
-    res.status(500).json({ success: false, message: "Error fetching filters", error: err.message });
+    res.status(500).json({ message: "Error fetching filter names", error: err.message });
   }
 });
 

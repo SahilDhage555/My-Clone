@@ -28,7 +28,7 @@ export default function Filters() {
 
   return (
     <div className="max-w-md mx-auto">
-      <div className="ps-2 w-[250px] me-2">
+      <div className="ps-2 w-[240px] me-2">
         <div className=" w-full " ref={dropdownRef}>
           <div
             className="w-full border border-gray-300 h-42 font-base rounded cursor-pointer py-1 px-3 flex items-center justify-between"

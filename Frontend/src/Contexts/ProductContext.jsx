@@ -21,12 +21,11 @@ export const ProductProvider = ({ children }) => {
       })
       .catch((err) => console.error("Error fetching products:", err));
 
-    axios
-      .get("https://my-clone-back.vercel.app/filters")
+      axios.get("https://my-clone-back.vercel.app/filters")
       .then((res) => {
         console.log("Filters API Response:", res.data);
-        if (Array.isArray(res.data)) {
-          setFilters(res.data);
+        if (res.data.data && Array.isArray(res.data.data)) {
+          setFilters(res.data.data);
         } else {
           console.error("Filters response is not an array:", res.data);
         }
