@@ -1,11 +1,12 @@
-
 import { useProductContext } from "../Contexts/ProductContext";
 import { FaStar } from "react-icons/fa";
 
 const Products = () => {
   const { products } = useProductContext();
 
- 
+  if (!Array.isArray(products) || products.length === 0) {
+    return <p className="text-center text-gray-500">No products available.</p>;
+  }
 
   return (
     <div>
@@ -49,11 +50,7 @@ const Products = () => {
                     <span className="flex bg-green-700 rounded-2xl text-white text-base px-2 py-0.5 opacity-90 items-center">
                       {rating} <FaStar className="text-xs ms-[2px]" />
                     </span>
-                    <span
-                      className={`${
-                        trustLogo ? "w-[30px]" : "w-[70px]"
-                      } leading-3 font-semibold text-gray-500 text-[10px]`}
-                    >
+                    <span className="text-xs text-gray-500 font-semibold">
                       {reviews} Reviews
                     </span>
                   </p>

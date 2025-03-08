@@ -26,11 +26,10 @@ router.post("/addProduct", async (req, res) => {
 // ✅ Fetch all products
 router.get("/", async (req, res) => {
   try {
-    const products = await ProductDetails.find(); // Retrieve all products
-    res.status(200).json({ success: true, data: products });
+    const products = await ProductDetails.find();
+    res.status(200).json(products); // Ensure it returns an array
   } catch (err) {
-    console.error("❌ Error fetching products:", err);
-    res.status(500).json({ success: false, message: "Error fetching products", error: err.message });
+    res.status(500).json({ message: "Error fetching products", error: err.message });
   }
 });
 

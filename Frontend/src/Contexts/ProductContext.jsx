@@ -11,12 +11,26 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {
     axios
       .get("https://my-clone-back.vercel.app/products")
-      .then((res) => setProducts(res.data))
+      .then((res) => {
+        console.log("Products API Response:", res.data);
+        if (Array.isArray(res.data)) {
+          setProducts(res.data);
+        } else {
+          console.error("Products response is not an array:", res.data);
+        }
+      })
       .catch((err) => console.error("Error fetching products:", err));
 
     axios
       .get("https://my-clone-back.vercel.app/filters")
-      .then((res) => setFilters(res.data))
+      .then((res) => {
+        console.log("Filters API Response:", res.data);
+        if (Array.isArray(res.data)) {
+          setFilters(res.data);
+        } else {
+          console.error("Filters response is not an array:", res.data);
+        }
+      })
       .catch((err) => console.error("Error fetching filters:", err));
   }, []);
 
