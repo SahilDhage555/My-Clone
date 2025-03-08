@@ -10,7 +10,7 @@ const Products = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-x-3 gap-y-4">
         {products.map(
           ({
             _id,
@@ -24,10 +24,10 @@ const Products = () => {
           }) => (
             <div
               key={_id}
-              className="w-[215px] cursor-pointer border h-[354px] rounded-lg shadow-lg border-gray-300"
+              className="w-[218px] cursor-pointer border h-[358px] rounded-lg shadow-lg border-gray-300"
             >
               <img
-                className="h-[200px] px-2 w-[220px]"
+                className="h-[205px] px-2 w-[222px]"
                 src={imgUrl}
                 alt={description}
               />
