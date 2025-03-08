@@ -50,9 +50,13 @@ const Products = () => {
                     <span className="flex bg-green-700 rounded-2xl text-white text-base px-2 py-0.5 opacity-90 items-center">
                       {rating} <FaStar className="text-xs ms-[2px]" />
                     </span>
-                    <span className="text-xs text-gray-500 font-semibold">
-                      {reviews} Reviews
-                    </span>
+                    <span
+                      className={`${
+                        trustLogo ? "w-[30px]" : "w-[70px]"
+                     } leading-3 font-semibold text-gray-500 text-[10px]`}
+                   >
+                    {reviews} Reviews
+                     </span>
                   </p>
                   {trustLogo && <img src={trustLogo} />}
                 </div>
