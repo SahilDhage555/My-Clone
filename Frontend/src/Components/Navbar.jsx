@@ -67,8 +67,10 @@ function Navbar() {
           <p>Profile</p>
         </div>
         <div className="flex-col font-normal text-gray-900 text-lg pe-3 cursor-pointer ">
+          <Link to="/signup">
           <BsCart2 className="m-auto text-xl" />
-          <Link to="/signup">Cart</Link>
+          Cart 
+          </Link>
         </div>
       </div>
 
