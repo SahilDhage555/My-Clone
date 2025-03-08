@@ -24,7 +24,7 @@ const Products = () => {
           }) => (
             <div
               key={_id}
-              className="w-[220px] cursor-pointer border h-[354px] rounded-lg shadow-lg border-gray-300"
+              className="w-[215px] cursor-pointer border h-[354px] rounded-lg shadow-lg border-gray-300"
             >
               <img
                 className="h-[200px] px-2 w-[220px]"
