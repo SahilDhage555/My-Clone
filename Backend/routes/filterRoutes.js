@@ -1,32 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const FilterNames = require("../models/filterName"); 
+const FilterNames = require("../models/filterName"); // Import the model
 
-// Add a new filter name to the Filter-Names collection
+// ✅ Add a new filter name
 router.post("/addFilters", async (req, res) => {
   try {
     const { name } = req.body;
+
     if (!name) return res.status(400).json({ message: "Filter name is required" });
 
-    // Create a new filter name document
+    // Create and save the filter name
     const filterName = new FilterNames({ name });
-
-    // Save the filter name to the collection
     await filterName.save();
 
-    res.status(201).json({ message: "Filter name added successfully", filterName });
+    res.status(201).json({ success: true, message: "Filter name added successfully", filterName });
   } catch (err) {
-    res.status(500).json({ message: "Error adding filter name", error: err.message });
+    console.error("❌ Error adding filter name:", err);
+    res.status(500).json({ success: false, message: "Error adding filter name", error: err.message });
   }
 });
 
-// Fetch all filter names from the Filter-Names collection
+// ✅ Fetch all filter names
 router.get("/", async (req, res) => {
   try {
-    const filterNames = await FilterNames.find(); // Retrieve all filter names
-    res.status(200).json(filterNames); // Send back the filter names
+    const filterNames = await FilterNames.find(); // Retrieve all filters
+    res.status(200).json({ success: true, data: filterNames });
   } catch (err) {
-    res.status(500).json({ message: "Error fetching filter names", error: err.message });
+    console.error("❌ Error fetching filters:", err);
+    res.status(500).json({ success: false, message: "Error fetching filters", error: err.message });
   }
 });
 

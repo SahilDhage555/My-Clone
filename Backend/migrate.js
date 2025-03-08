@@ -2,24 +2,35 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 const localURI = "mongodb://127.0.0.1:27017/Meesho"; // Local MongoDB
-const atlasURI = process.env.MONGODB_URI; // Atlas URI from .env file
+const atlasURI = process.env.MONGODB_URI; // MongoDB Atlas
 
-mongoose.connect(localURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const transferCollection = async (collectionName) => {
+    try {
+        // Connect to Local DB
+        const localConnection = await mongoose.createConnection(localURI).asPromise();
+        console.log(`✅ Connected to Local MongoDB, fetching ${collectionName}...`);
 
-const ProductSchema = new mongoose.Schema({}, { strict: false });
-const Product = mongoose.model("products", ProductSchema);
+        const LocalModel = localConnection.model(collectionName, new mongoose.Schema({}, { strict: false }));
+        const data = await LocalModel.find().lean(); // Using .lean() to avoid session issues
+        await localConnection.close();
+        console.log(`📦 Found ${data.length} records, transferring ${collectionName} to Atlas...`);
 
-mongoose.connection.once("open", async () => {
-    console.log("✅ Connected to Local MongoDB");
+        // Connect to Atlas DB
+        const atlasConnection = await mongoose.createConnection(atlasURI).asPromise();
+        const AtlasModel = atlasConnection.model(collectionName, new mongoose.Schema({}, { strict: false }));
 
-    const data = await Product.find();
-    console.log(`📦 Found ${data.length} records, transferring to Atlas...`);
+        await AtlasModel.insertMany(data);
+        console.log(`🚀 Successfully transferred ${collectionName} to Atlas!`);
 
-    mongoose.disconnect();
-    mongoose.connect(atlasURI, { useNewUrlParser: true, useUnifiedTopology: true });
+        await atlasConnection.close();
+    } catch (error) {
+        console.error(`❌ Error transferring ${collectionName}:`, error);
+    }
+};
 
-    Product.insertMany(data)
-        .then(() => console.log("🚀 Data transferred successfully!"))
-        .catch(err => console.error("❌ Error transferring data:", err))
-        .finally(() => mongoose.disconnect());
-});
+// Transfer only the required collections
+(async () => {
+    await transferCollection("Filter-Names");
+    await transferCollection("FooterContent");
+    await transferCollection("ProductDetails");
+})();

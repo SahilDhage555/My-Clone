@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 require("dotenv").config();
 const cors = require("cors");
 
@@ -10,28 +9,33 @@ const footerRoutes = require("./routes/footerRoute");
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json()); // ✅ Required for POST requests
 
-// ✅ Connect to MongoDB (Meesho Database)
+mongoose.set("strictQuery", false);
+
+// ✅ Connect to MongoDB Atlas
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 5000, // Set timeout to 5s
+      serverSelectionTimeoutMS: 5000,
     });
-    console.log("MongoDB Connected Successfully!");
+    console.log("✅ MongoDB Atlas Connected Successfully!");
   } catch (err) {
-    console.error("MongoDB Connection Failed!", err);
-    process.exit(1); // Exit if DB connection fails
+    console.error("❌ MongoDB Connection Failed!", err);
+    process.exit(1); // Stop server if DB connection fails
   }
 };
 connectDB();
-// ✅ Use the Routes for Filters, Products, and Footer
+
+// ✅ Debugging MongoDB Connection
+mongoose.connection.on("connected", () => console.log("✅ Connected to MongoDB Atlas"));
+mongoose.connection.on("error", (err) => console.error("❌ MongoDB Error:", err));
+
 app.use("/filters", filterRoutes);
 app.use("/products", productRoutes);
-app.use("/footer", footerRoutes); // ✅ Footer Content API
+app.use("/footer", footerRoutes);
 
-// ✅ Start the Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

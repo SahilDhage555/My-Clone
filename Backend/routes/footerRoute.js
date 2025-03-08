@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addContent, getFooterContent } = require("../controllers/footerContent"); 
+const { addContent, getFooterContent } = require("../controllers/footerContent"); // Import controllers
 
 // ✅ API to add footer content
 router.post("/add", addContent);
